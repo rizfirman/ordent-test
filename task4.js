@@ -1,4 +1,4 @@
-function generateAcronym(fullName) {
+const generateAcronym = (fullName) => {
   const tokens = fullName.trim().toLowerCase().split(/\s+/);
 
   const n = tokens.length;
@@ -31,18 +31,16 @@ function generateAcronym(fullName) {
       lastNameTokens = [tokens[2], tokens[3]];
       break;
   }
-  function getFirstLettersFromToken(token) {
+  const getFirstLettersFromToken = (token) => {
     const parts = token.split('-');
     return parts.map((part) => part[0].toUpperCase()).join('');
-  }
+  };
 
- 
   let acronym = '';
   for (const firstNameToken of firstNameTokens) {
     acronym += getFirstLettersFromToken(firstNameToken);
   }
 
- 
   for (const lastNameToken of lastNameTokens) {
     if (lastNameToken === 'von') {
       acronym += 'v';
@@ -55,7 +53,7 @@ function generateAcronym(fullName) {
   }
 
   return acronym;
-}
+};
 
 // ----- CONTOH PENGGUNAAN -----
 console.log(generateAcronym('Thomas Meyer')); // TM
@@ -67,4 +65,3 @@ console.log(generateAcronym('Paul von Lahnstein')); // PvL
 console.log(generateAcronym('Martin von Lahnstein-Meyer')); // MvLM
 console.log(generateAcronym('Madonna')); // M
 console.log(generateAcronym('Bono')); // B
-console.log(generateAcronym('Tes')); // B
